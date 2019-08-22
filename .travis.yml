@@ -7,11 +7,11 @@ before_install:
   # Instalar Expect para realizar login
   - sudo apt-get install expect
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-  - bash cfg.sh $HEROKU_USERNAME $HEROKU_API_KEY
+  - ./cfg.sh $HEROKU_USERNAME $HEROKU_API_KEY
   - heroku container:login
 
 script:
-  - docker build -t $DOCKER_TAG -f ./client/Dockerfile.web .
+  - docker build -t $DOCKER_TAG -f ./client/Dockerfile.web ./client/
   # - docker run -e CI=true $DOCKER_TAG npm test
   - docker run -e CI=true $DOCKER_TAG npm test
   # - docker tag $DOCKER_TAG registry.heroku.com/$HEROKU_APP_NAME/web
