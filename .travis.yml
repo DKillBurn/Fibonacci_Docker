@@ -5,7 +5,7 @@ env:
   - DOCKER_IMAGES_HEROKU=none
 before_install:
   # Instalar Expect para realizar login
-  - apt-get install expect
+  - sudo apt-get install expect
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - bash cfg.sh $HEROKU_USERNAME $HEROKU_API_KEY
   - heroku container:login
