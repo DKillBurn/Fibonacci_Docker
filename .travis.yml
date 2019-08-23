@@ -7,7 +7,7 @@ before_install:
   # Instalar Expect para realizar login
   - sudo apt-get install expect
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-  - ./cfg.sh $HEROKU_USERNAME $HEROKU_API_KEY
+  - bash cfg.sh $HEROKU_USERNAME $HEROKU_API_KEY
   - heroku container:login
 
 script:
@@ -25,6 +25,6 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    bash startDeploy.sh $DOCKER_IMAGES_HEROKU
+    heroku container:release $DOCKER_IMAGES_HEROKU
   on:
     branch: master
