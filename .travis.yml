@@ -19,7 +19,8 @@ script:
 
 after_success:
   # Construimos y Pusheamos los proyectos, para que funcione, los Dockerfile deben de tener .web/.worker/.image
-  - DOCKER_IMAGES_HEROKU=`heroku container:push --recursive | grep 'Push' | awk '{ ORS=" "; print $3 }'
+  - DOCKER_IMAGES_HEROKU=`heroku container:push --recursive | grep 'Push' | awk '{ ORS=" "; print $3 }'`
+  - echo $DOCKER_IMAGES_HEROKU;
 
 deploy:
   provider: script
